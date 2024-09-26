@@ -1,0 +1,257 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  font-family: 'Inter Tight', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* webkit solution */
+::-webkit-input-placeholder { 
+  text-align:right; 
+}
+
+/* mozilla solution */
+input:-moz-placeholder { 
+  text-align:right; 
+}
+
+a {
+  font-weight: 500;
+  color: #000000;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  background: #ECF0F1;
+  background-size: cover;
+  background-repeat: no-repeat no-repeat;
+  background-position: center center;
+  margin: 0;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+main {
+  color: black;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+}
+
+tr {
+  border-radius: 10px;
+  background-color: #000;
+  color: white;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #333333;
+}
+
+/* Navbar Content */
+.nav {
+  display: flex;
+  padding: 1em 2em;
+}
+
+.nav ul {
+  display: flex;
+  margin-left: auto;
+  flex-direction: row;
+}
+
+.nav-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: larger;
+  font-weight: 900;
+}
+
+.nav-title a {
+  color: #b864c4;
+}
+
+.nav-item {
+  display: block;
+  margin-left: auto;
+  list-style: none;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+}
+
+.active {
+  font-weight: 700;
+}
+
+.table {
+  width: 80vw;
+  table-layout: fixed;
+}
+
+.board {
+  width: 100%;
+}
+
+.board-display {
+  display: flex;
+}
+
+.swim-lane {
+  text-align: center;
+  font-weight: 500;
+  width: 33%;
+  height: 90vh; 
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  margin: 5px;
+  padding: 5px;
+}
+
+.todo {
+  background-color: #e9cbec;
+}
+
+.inprogress {
+  background-color: #b864c4;
+}
+
+.done {
+  background-color: #732381;
+}
+
+.ticket-card {
+  text-align: left;
+  background-color: #fff;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 0.1em solid black;
+}
+
+.container {
+  /* margin: auto; */
+  width: 100%;
+  /* height: 90%; */
+}
+
+#create-ticket-link {
+  display: block;
+  margin-left: auto;
+}
+
+
+.form {
+  width: 60%;
+  height: 80%;
+  background-color: #b864c4;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form > h1, .form > label {
+  color: yellow;
+}
+
+.form > input {
+  width: 200px;
+  
+}
+
+.form > label {
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
+}
+
+.form button {
+  margin-top: 2.5%;
+}
+
+.form textarea {
+  resize: both;
+  min-height: 30px;
+  min-width: 30px;
+}
+
+.editBtn {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+.deleteBtn {
+  background-color: #f9f9f9;
+  font-weight: 500;
+  color: black;
+  text-decoration: inherit;
+}
+
+.deleteBtn:hover {
+  color: #535bf2;
+}
+
+.login-notice {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
