@@ -1,10 +1,9 @@
 import { seedUsers } from './user-seeds.js';
-//IMPORT OTHER SEEDERS IF YOU MAKE MORE MODELS
 import sequelize from '../config/connection.js';
 
 const seedAll = async (): Promise<void> => {
   try {
-    await sequelize.sync({ force: true }); //everytime this is run will destroy database and recreate
+    await sequelize.sync({ force: true });
     console.log('\n----- DATABASE SYNCED -----\n');
 
     await seedUsers();

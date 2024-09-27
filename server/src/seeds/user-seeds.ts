@@ -1,12 +1,24 @@
-import { User } from '../models/user.js';
-//BOILERPLATE FOR SEEDERS
-//remember the individualHooks: true for bulkCreate in case we go back
+import { User } from '../models/index.js';
 
 export const seedUsers = async () => {
-  await User.create(
-    { username: 'JollyGuru',
-      email: 'jolly@guru.com',
-      password: 'password'
-    }
+  await User.bulkCreate(
+    [
+      {
+        username: 'JollyGuru',
+        email: 'jolly@guru.com',
+        password: 'password'
+      },
+      {
+        username: 'SunnyScribe',
+        email: 'sunny@scribe.com',
+        password: 'password',
+      },
+      {
+        username: 'RadiantComet',
+        email: 'radiant@comet.com',
+        password: 'password',
+      },
+    ],
+    { individualHooks: true }
   );
 };
