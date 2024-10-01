@@ -1,5 +1,5 @@
-import type { Request, Response } from 'express';
-import { Game } from '../models/index.js';
+// import type { Request, Response } from 'express';
+// import { Game } from '../models/index.js';
 
 // TODO: Code out the controller functions for the games objects
 export const getName = async () => {
