@@ -15,7 +15,7 @@ const Login = () => {
   });
 
   const handleChange = (
-    e:any
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setLoginData({
