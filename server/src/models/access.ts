@@ -29,5 +29,5 @@ export function AccessFactory(sequelize: Sequelize): typeof Access {
         }
     );
 
-    return Access;
-}
+//     return Access;
+// }

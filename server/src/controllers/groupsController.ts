@@ -1,5 +1,5 @@
-import type { Request, Response } from 'express';
-import { Group } from '../models/index.js';
+// import type { Request, Response } from 'express';
+// import { Group } from '../models/index.js';
 
 // TODO: Code out the controller functions for groups
 export const setOwner = async () => {
