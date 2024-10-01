@@ -2,6 +2,10 @@
 // import { Group } from '../models/index.js';
 
 // TODO: Code out the controller functions for groups
+export const setOwner = async () => {
+    return
+};
+
 export const getMembers = async () => {
     return
 };
@@ -22,7 +26,7 @@ export const addGame = async () => {
     return``
 };
 
-export const addMember = async () => {
+export const addMember = async () => { // We can add this as a method directly on the instance creation - see mactivity 20 Book.ts in week 14
     return
 };
 
