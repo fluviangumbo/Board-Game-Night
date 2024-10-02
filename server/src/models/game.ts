@@ -1,15 +1,6 @@
-import { DataTypes, type Sequelize, Model, type Optional } from 'sequelize';
+import { Model, type InferAttributes, type InferCreationAttributes,  DataTypes, type Sequelize, } from 'sequelize';
 
-interface GameAttributes {
-    id: number;
-    name: string;
-    published: number;
-    rank: number;
-}
-
-interface GameCreationAttributes extends Optional<GameAttributes, 'id'> {}
-
-export class Game extends Model<GameAttributes, GameCreationAttributes> implements GameAttributes {
+export class Game extends Model<InferAttributes<Game>, InferCreationAttributes<Game>> {
     public id!: number;
     public name!: string;
     public published!: number;
