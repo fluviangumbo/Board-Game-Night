@@ -12,8 +12,8 @@ export class Access extends Model<InferAttributes<Access>, InferCreationAttribut
 export function AccessFactory(sequelize: Sequelize): typeof Access {
     Access.init(
         {
-            accessId:{
-                type:  DataTypes.INTEGER,
+            accessId: {
+                type: DataTypes.INTEGER,
                 primaryKey: true,
                 autoIncrement: true,
             },
@@ -32,4 +32,3 @@ export function AccessFactory(sequelize: Sequelize): typeof Access {
     return Access;
 }
 
-access TABLE {

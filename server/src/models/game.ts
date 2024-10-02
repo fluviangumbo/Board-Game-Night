@@ -1,4 +1,4 @@
-import { Model, type InferAttributes, type InferCreationAttributes,  DataTypes, type Sequelize, } from 'sequelize';
+import { Model, type InferAttributes, type InferCreationAttributes, DataTypes, type Sequelize, } from 'sequelize';
 
 export class Game extends Model<InferAttributes<Game>, InferCreationAttributes<Game>> {
     public id!: number;
@@ -20,16 +20,17 @@ export function GameFactory(sequelize: Sequelize): typeof Game {
                 allowNull: false,
             },
             published: {
-                type: DataTypes.NUMBER,
+                type: DataTypes.INTEGER,
                 allowNull: false,
             },
             rank: {
-                type: DataTypes.NUMBER,
+                type: DataTypes.INTEGER,
                 allowNull: false,
             },
         },
         {
             tableName: 'games',
+            timestamps: false,
             sequelize,
             hooks: {}, // unsure
         }
