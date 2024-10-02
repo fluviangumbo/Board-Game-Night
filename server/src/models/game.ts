@@ -3,8 +3,8 @@ import { DataTypes, type Sequelize, Model, type Optional } from 'sequelize';
 interface GameAttributes {
     id: number;
     name: string;
-    format: Text; // might be a lot of info
-    genre: string;
+    published: number;
+    rank: number;
 }
 
 interface GameCreationAttributes extends Optional<GameAttributes, 'id'> {}
@@ -12,8 +12,8 @@ interface GameCreationAttributes extends Optional<GameAttributes, 'id'> {}
 export class Game extends Model<GameAttributes, GameCreationAttributes> implements GameAttributes {
     public id!: number;
     public name!: string;
-    public format!: Text;
-    public genre!: string;
+    public published!: number;
+    public rank!: number;
 }
 
 export function GameFactory(sequelize: Sequelize): typeof Game {
@@ -28,12 +28,12 @@ export function GameFactory(sequelize: Sequelize): typeof Game {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
-            format: {
-                type: DataTypes.TEXT,
+            published: {
+                type: DataTypes.NUMBER,
                 allowNull: false,
             },
-            genre: {
-                type: DataTypes.STRING,
+            rank: {
+                type: DataTypes.NUMBER,
                 allowNull: false,
             },
         },
