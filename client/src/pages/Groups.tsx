@@ -1,96 +1,89 @@
-// import { useState, type FormEvent, type ChangeEvent } from "react";
-// import Auth from "../utils/auth";
-// import { login } from "../api/authAPI";
-// import type { UserLogin } from "../interfaces/UserLogin";
-// import Button from "react-bootstrap/Button";
-// import Form from "react-bootstrap/Form";
-// import FloatingLabel from "react-bootstrap/FloatingLabel";
+import { useState, type FormEvent, type ChangeEvent } from "react";
+import Auth from "../utils/auth";
+import { login } from "../api/authAPI";
+import type { UserLogin } from "../interfaces/UserLogin";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import FloatingLabel from "react-bootstrap/FloatingLabel";
+import type { Group } from "../interfaces/Group";
 
-// const GroupCreation = () => {
-//   const [userData, setUserData] = useState<UserLogin>({
-//     username: "",
-//     password: "",
-//   });
+const GroupCreation = () => {
+  const [groupData, setGroupData] = useState<Group>({
+    members: [],
+    games: [],
+  });
 
-//   const handleChange = (
-//     e: React.ChangeEvent<
-//       HTMLInputElement
-//     >
-//   ) => {
-//     const { name, value } = e.target;
-//     setUserData({
-//       ...userData,
-//       [name]: value,
-//     });
-//   };
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement
+    >
+  ) => {
+    const { name, value } = e.target;
+    setGroupData({
+      ...groupData,
+      [name]: value,
+    });
+  };
 
-//   const handleSubmit = async (e: FormEvent) => {
-//     e.preventDefault();
-//     try {
-//       const data = await login(userData);
-//       Auth.login(data.token);
-//       console.log("User created successfully");
-//     } catch (err) {
-//       console.error("Failed to create user", err);
-//     }
-//   };
 
-//   return (
-//     <div className="form-container">
-//       <form onSubmit={handleSubmit}>
-//         <h2>Create a New Account</h2>
-//         <div className="form-group">
-//           <FloatingLabel
-//             controlId="floatingInput"
-//             label="Email"
-//             className="mb-3"
-//           >
-//             <Form.Control
-//               type="email"
-//               name="username"
-//               placeholder="name@example.com"
-//               value={userData.username ?? ''}
-//               onChange={handleChange}
-//               required
-//             />
-//           </FloatingLabel>
-//         </div>
-//         <div className="form-group">
-//           <FloatingLabel
-//             controlId="floatingPassword"
-//             label="Password"
-//             className="mb-3"
-//           >
-//             <Form.Control
-//               type="password"
-//               name="password"
-//               placeholder="Password"
-//               value={userData.password ?? ''}
-//               onChange={handleChange}
-//               required
-//             />
-//           </FloatingLabel>
-//         </div>
-//         <div className="form-group">
-//           <Form.Group className="mb-3" controlId="formBasicCheckbox">
-//             //{" "}
-//             <Form.Check
-//               type="checkbox"
-//               label="Check the box to agree to the terms and conditions."
-//             />
-//             //{" "}
-//           </Form.Group>
-//           //{" "}
-//           <Button variant="primary" type="submit">
-//             Create Account
-//           </Button>
-//         </div>
-//       </form>
-//     </div>
-//   );
-// // };
 
-// export default GroupCreation;
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    try {
+      const data = await login(groupData);
+      Auth.login(data.token);
+      console.log("Group created successfully");
+    } catch (err) {
+      console.error("Failed to create group", err);
+    }
+  };
+
+  return (
+    <div className="form-container">
+      <form onSubmit={handleSubmit}>
+        <h2>Create a New Group</h2>
+        <div className="form-group">
+          <FloatingLabel
+            controlId="floatingInput"
+            label="Group Name"
+            className="mb-3"
+          >
+            <Form.Control
+              type="email"
+              name="username"
+              placeholder="name@example.com"
+              value={groupData.username ?? ''}
+              onChange={handleChange}
+              required
+            />
+          </FloatingLabel>
+        </div>
+        <div className="form-group">
+          <FloatingLabel
+            controlId="floatingID"
+            label="Mythical Adult Friends"
+            className="mb-3"
+          >
+            <Form.Control
+              type="members"
+              name="members"
+              placeholder="members"
+              value={groupData.members ?? ''}
+              onChange={handleChange}
+              required
+            />
+          </FloatingLabel>
+        </div>
+          <Button variant="primary" type="submit">
+            Create Group
+          </Button>
+      </form>
+    </div>
+  );
+};
+// };
+
+export default GroupCreation;
 
 
 
@@ -98,11 +91,14 @@
 // 1. User must be logged in
     // a. check if user is logged in
     // b. promt to log in if not
+
 // 2. User must create a group name
     // a. form to create group name 
     // b. check if group name is unique
     // c.  if yes proceed to next step
     // d. if no, prompt user to create a new group name
+    // e. group name must be alphanumeric
+
 // 3. User must add members to the group
     // a. form to add members to the group
         // i. form must have a search bar to search for users
@@ -114,8 +110,10 @@
         // vii. search bar must have a dropdown of users
         // viii. Search with username or email
     // b. check if members are valid users
-    // c. if yes proceed to next step
-    // d. if no, prompt user to add valid users
+    // c. check if members are already in the group
+    // d. if yes proceed to next step
+    // e. if no, prompt user to add valid users
+
 // 4. User may add games to the group
     // a. form to add games to the group
         // i. form must have a search bar to search for games
