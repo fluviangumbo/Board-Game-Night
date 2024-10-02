@@ -3,6 +3,10 @@ import { useState, type FormEvent, type ChangeEvent } from 'react';
 import Auth from '../utils/auth';
 import { login } from '../api/authAPI';
 import type { UserLogin } from '../interfaces/UserLogin';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import FloatingLabel from 'react-bootstrap/FloatingLabel'
+
 
 const Login = () => {
   const [loginData, setLoginData] = useState<UserLogin>({
@@ -11,7 +15,7 @@ const Login = () => {
   });
 
   const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setLoginData({
@@ -31,33 +35,34 @@ const Login = () => {
   };
 
   return (
-    <div className='form-container'>
-      <form className='form login-form' onSubmit={handleSubmit}>
+<div className="form-container">
+      <form className="form login-form" onSubmit={handleSubmit}>
         <h1>Login</h1>
-        <div className='form-group'>
-          <label>Username</label>
-          <input
-            className='form-input'
-            type='text'
-            name='username'
-            value={loginData.username || ''}
-            onChange={handleChange}
-          />
+        <div className="form-group">
+          <Form.Label>Email address</Form.Label>
+          <FloatingLabel
+            controlId="floatingInput"
+            label="Email address"
+            className="mb-3"
+          >
+            <Form.Control type="email" placeholder="name@example.com" />
+          </FloatingLabel>
         </div>
-        <div className='form-group'>
-          <label>Password</label>
-          <input
-            className='form-input'
-            type='password'
-            name='password'
-            value={loginData.password || ''}
-            onChange={handleChange}
-          />
+        <div className="form-group">
+          <Form.Label>Password</Form.Label>
+          <FloatingLabel controlId="floatingPassword" label="Password">
+            <Form.Control type="password" placeholder="Password" onChange={handleChange}/>
+          </FloatingLabel>
         </div>
-        <div className='form-group'>
-          <button className='btn btn-primary' type='submit'>
-            Login
-          </button>
+        <div className="form-group">
+          <Form.Group className="mb-3" controlId="formBasicCheckbox">
+            // <Form.Check type="checkbox" label="Remember Me" />
+            //{" "}
+          </Form.Group>
+          //{" "}
+          <Button variant="primary" type="submit">
+            // Submit //{" "}
+          </Button>
         </div>
       </form>
     </div>

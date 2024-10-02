@@ -1,20 +1,10 @@
-import { DataTypes, type Sequelize, Model, type Optional } from 'sequelize';
+import { Model, type InferAttributes, type InferCreationAttributes, DataTypes, type Sequelize, } from 'sequelize';
 
-
-interface GameAttributes {
-    id: number;
-    name: string;
-    format: Text; // might be a lot of info
-    genre: string;
-}
-
-interface GameCreationAttributes extends Optional<GameAttributes, 'id'> {}
-
-export class Game extends Model<GameAttributes, GameCreationAttributes> implements GameAttributes {
+export class Game extends Model<InferAttributes<Game>, InferCreationAttributes<Game>> {
     public id!: number;
     public name!: string;
-    public format!: Text;
-    public genre!: string;
+    public published!: number;
+    public rank!: number;
 }
 
 export function GameFactory(sequelize: Sequelize): typeof Game {
@@ -29,17 +19,18 @@ export function GameFactory(sequelize: Sequelize): typeof Game {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
-            format: {
-                type: DataTypes.TEXT,
+            published: {
+                type: DataTypes.INTEGER,
                 allowNull: false,
             },
-            genre: {
-                type: DataTypes.STRING,
+            rank: {
+                type: DataTypes.INTEGER,
                 allowNull: false,
             },
         },
         {
             tableName: 'games',
+            timestamps: false,
             sequelize,
             hooks: {}, // unsure
         }
