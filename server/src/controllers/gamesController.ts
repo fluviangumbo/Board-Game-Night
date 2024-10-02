@@ -1,9 +1,10 @@
 // import type { Request, Response } from 'express';
-// import { Game } from '../models/index.js';
+import { Game } from '../models/index.js';
 
 // TODO: Code out the controller functions for the games objects
 export const getName = async () => {
-    return
+    const game = await Game.findOne();
+    return game?.name;
 };
 
 export const getFormat = async () => {
