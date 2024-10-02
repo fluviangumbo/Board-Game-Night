@@ -1,6 +1,5 @@
 import { DataTypes, type Sequelize, Model, type Optional } from 'sequelize';
 
-
 interface GameAttributes {
     id: number;
     name: string;

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // import { DataTypes, type Sequelize, Model, type Optional } from 'sequelize';
 // import { User, Group } from './index.js';
 
@@ -41,6 +42,38 @@
 //             hooks: {},
 //         }
 //     );
+=======
+import { Model, type InferAttributes, type InferCreationAttributes, type CreationOptional, DataTypes, type Sequelize, type ForeignKey, } from 'sequelize';
+import type { User } from './user.js';
+import type { Group } from './group.js';
+
+export class Access extends Model<InferAttributes<Access>, InferCreationAttributes<Access>> {
+    declare accessId: CreationOptional<number>;
+    declare user: ForeignKey<User['id']>;
+    declare group: ForeignKey<Group['id']>;
+    declare level: string;
+}
+
+export function AccessFactory(sequelize: Sequelize): typeof Access {
+    Access.init(
+        {
+            accessId: {
+                type: DataTypes.INTEGER,
+                primaryKey: true,
+                autoIncrement: true,
+            },
+            level: {
+                type: DataTypes.ENUM('Owner', 'Admin', 'Member'),
+                allowNull: false,
+            },
+        },
+        {
+            tableName: 'access',
+            sequelize,
+            hooks: {},
+        }
+    );
+>>>>>>> ed81c181e077455149f30611d7e6865fbfe97f93
 
 //     return Access;
 // }
