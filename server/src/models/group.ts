@@ -27,15 +27,7 @@ export function GroupFactory(sequelize: Sequelize): typeof Group {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
-            // games: {
-            //     type: DataTypes.ARRAY(DataTypes.INTEGER),
-            //     allowNull: true,
-            // },
-            // members: {
-            //     type: DataTypes.ARRAY(DataTypes.INTEGER),
-            //     allowNull: false,
-            // },
-        }, //VALIDATION?
+        },
         {
             tableName: 'groups',
             sequelize,

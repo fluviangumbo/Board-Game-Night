@@ -8,6 +8,8 @@ import { Group, Access } from '../models/index.js';
 
 export const getGroupById = async (req: Request, res: Response) => {
     const { id } = req.params;
+// Check if they can access group
+
     try {
         const group = await Group.findByPk(id);
 
@@ -57,8 +59,29 @@ export const addGames = async () => {
     return
 };
 
-export const addMember = async () => { // We can add this as a method directly on the instance creation - see activity 20 Book.ts in week 14
-    return
+export const addMember = async (req: Request, res: Response) => {
+    const { id } = req.params;
+    // Need to validate this person is not already a member
+    try {
+        const join = await Group.findByPk(id);
+        
+        let group = null;
+        const user = req.body.user;
+        if (join) {
+            group = join.id;
+        } else {
+            res.status(500).json({ message: 'Error - group selection.' });
+        }
+        const level = req.body.level;
+
+        if (!group || !user || !level) {
+            res.status(500).json({ message: 'An error occurred.' });
+        } else {
+            const newAccess = await Access.create({ user, group, level })
+        }
+    } catch (err: any) {
+        res.status(500).json({ message: err.message });
+    }
 };
 
 export const deleteGame = async () => {
@@ -66,10 +89,6 @@ export const deleteGame = async () => {
 };
 
 export const deleteMember = async () => {
-    return
-};
-
-export const setAccess = async () => {
     return
 };
 
@@ -89,4 +108,3 @@ export const deleteGroup = async () => {
     return
 };
 
-export { router as groupRouter };
