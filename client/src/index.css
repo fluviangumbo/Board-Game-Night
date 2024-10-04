@@ -363,3 +363,18 @@ body {
   font-size: 16px;
   color: #1a1a1a;
 }
+
+.login-notice {
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+  text-align: center;
+}
+
+.login-button {
+  display: flex;
+  justify-content: right; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+  text-align: center;
+  padding: 10px;
+}
