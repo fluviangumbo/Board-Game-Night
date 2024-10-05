@@ -3,8 +3,6 @@ import { DataTypes, type Sequelize, Model, type Optional } from 'sequelize';
 interface GroupAttributes {
     id: number;
     name: string;
-    // games: number[] | [];
-    // members: number[];
 }
 
 interface GroupCreationAttributes extends Optional<GroupAttributes, 'id'> {}
@@ -12,8 +10,6 @@ interface GroupCreationAttributes extends Optional<GroupAttributes, 'id'> {}
 export class Group extends Model<GroupAttributes, GroupCreationAttributes> implements GroupAttributes {
     public id!: number;
     public name!: string;
-    // public games!: number[] | [];, DON'T NEED BECAUSE OF MANY-TO-MANY
-    // public members!: number[] | [];
 
     public readonly createdAt!: Date;
     public readonly updatedAt!: Date;
@@ -31,15 +27,7 @@ export function GroupFactory(sequelize: Sequelize): typeof Group {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
-            // games: {
-            //     type: DataTypes.ARRAY(DataTypes.INTEGER),
-            //     allowNull: true,
-            // },
-            // members: {
-            //     type: DataTypes.ARRAY(DataTypes.INTEGER),
-            //     allowNull: false,
-            // },
-        }, //VALIDATION?
+        },
         {
             tableName: 'groups',
             sequelize,

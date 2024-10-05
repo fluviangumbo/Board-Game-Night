@@ -7,10 +7,10 @@ export const getName = async () => {
     return game?.name;
 };
 
-export const getFormat = async () => {
+export const getPublished = async () => {
     return
 };
 
-export const getGenre = async () => {
+export const getRank = async () => {
     return
 };

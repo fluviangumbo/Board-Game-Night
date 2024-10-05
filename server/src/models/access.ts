@@ -1,11 +1,21 @@
-import { Model, type InferAttributes, type InferCreationAttributes, type CreationOptional, DataTypes, type Sequelize, type ForeignKey, } from 'sequelize';
+import { Model, type Optional, type CreationOptional, DataTypes, type Sequelize, type ForeignKey, } from 'sequelize';
 import type { User } from './user.js';
 import type { Group } from './group.js';
-export class Access extends Model<InferAttributes<Access>, InferCreationAttributes<Access>> {
-    declare accessId: CreationOptional<number>;
-    declare user: ForeignKey<User['id']>;
-    declare group: ForeignKey<Group['id']>;
-    declare level: string;
+
+interface AccessAttributes {
+    accessId: number;
+    user: number;
+    group: number;
+    level: string;
+}
+
+interface AccessCreationAttributes extends Optional<AccessAttributes, 'accessId'> {}
+
+export class Access extends Model<AccessAttributes, AccessCreationAttributes> implements AccessAttributes {
+    public accessId!: CreationOptional<number>;
+    public user!: ForeignKey<User['id']>;
+    public group!: ForeignKey<Group['id']>;
+    public level!: string;
 }
 export function AccessFactory(sequelize: Sequelize): typeof Access {
     Access.init(
@@ -14,6 +24,14 @@ export function AccessFactory(sequelize: Sequelize): typeof Access {
                 type: DataTypes.INTEGER,
                 primaryKey: true,
                 autoIncrement: true,
+            },
+            user: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+            },
+            group: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
             },
             level: {
                 type: DataTypes.ENUM('Owner', 'Admin', 'Member'),
