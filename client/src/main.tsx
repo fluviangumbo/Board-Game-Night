@@ -9,6 +9,9 @@ import Home from './pages/Home.tsx';
 import Login from './pages/Login.tsx';
 import SignUp from './pages/SignUp.tsx';
 import Calendar from './pages/Calendar.tsx';
+// import GameBrowser from './pages/GameBrowser.tsx';
+// import Groups from './pages/Groups.tsx';
+// import Summary from './pages/Summary.tsx';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +35,18 @@ const router = createBrowserRouter([
         path: '/calendar',
         element: <Calendar />,
       },
+      {
+      //   path: '/game-browser',
+      //   element: <GameBrowser />,
+      // },
+      // {
+      //   path: '/groups',
+      //   element: <Groups />,
+      // },
+      // {
+      //   path: '/summary',
+      //   element: <Summary />,
+      // },
     ],
   },
 ]);
