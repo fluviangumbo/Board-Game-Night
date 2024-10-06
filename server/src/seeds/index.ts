@@ -1,4 +1,6 @@
 import { seedUsers } from './user-seeds.js';
+import { seedGroups } from './group-seeds.js';
+import { seedAccess } from './access-seeds.js';
 import sequelize from '../config/connection.js';
 
 const seedAll = async (): Promise<void> => {
@@ -8,6 +10,12 @@ const seedAll = async (): Promise<void> => {
 
     await seedUsers();
     console.log('\n----- USERS SEEDED -----\n');
+
+    await seedGroups();
+    console.log('\n----- GROUPS SEEDED -----\n');
+
+    await seedAccess();
+    console.log('\n----- ACCESS SEEDED -----\n');
 
     process.exit(0);
   } catch (error) {

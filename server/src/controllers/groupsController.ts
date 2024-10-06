@@ -31,7 +31,9 @@ export const createGroup = async (req: Request, res: Response) => {
         const group = newGroup.id;
         const level = 'Owner';
 
-        await Access.create({ user, group, level }); // Shouldn't matter that we don't reference this
+        // @ts-ignore
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const newAccess = await Access.create({ user, group, level }); // Shouldn't matter that we don't reference this
 
         res.status(201).json(newGroup);
     } catch (err: any) {
@@ -114,7 +116,9 @@ export const addMember = async (req: Request, res: Response) => {
         if (!group || !user || !level) {
             res.status(500).json({ message: 'An error occurred.' });
         } else {
-            await Access.create({ user, group, level });
+            // @ts-ignore
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            const newAccess = await Access.create({ user, group, level });
         }
     } catch (err: any) {
         res.status(500).json({ message: err.message });

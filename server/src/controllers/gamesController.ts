@@ -7,10 +7,20 @@ export const getName = async () => {
     return game?.name;
 };
 
-export const getPublished = async () => {
-    return
-};
+// export const getPublished = async () => {
+//     return
+// };
 
-export const getRank = async () => {
-    return
-};
+// export const getRank = async () => {
+//     return
+// };
+
+// export const hotGames = async (_req: Request, _res: Response) => {
+//     return;
+// }
+
+// export const getDetails = async (_req: Request, _res: Response) => {
+//     const game = await Game.findOne();
+//     return game?.name;
+//     // these functions need confirmation with Robby, this one might nor work because difference in API
+// }
