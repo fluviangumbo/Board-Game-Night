@@ -1,5 +1,5 @@
 import type { Request, Response } from 'express';
-import { Group, Access } from '../models/index.js';
+import { Group, Access, Game } from '../models/index.js';
 
 // TODO: Code out the controller functions for groups
 // export const getGroups = async () => {
@@ -31,7 +31,7 @@ export const createGroup = async (req: Request, res: Response) => {
         const group = newGroup.id;
         const level = 'Owner';
 
-        const newAccess = await Access.create({ user, group, level }); // Shouldn't matter that we don't reference this
+        await Access.create({ user, group, level }); // Shouldn't matter that we don't reference this
 
         res.status(201).json(newGroup);
     } catch (err: any) {
@@ -39,24 +39,61 @@ export const createGroup = async (req: Request, res: Response) => {
     }
 };
 
-export const getMembers = async () => {
-    return
+// export const getMembers = async () => { CAN BE FUTURE IMPLEMENTATION - routing to profiles from group
+//     const { group } = req.params;
+// };
+
+// export const getMemberById = async () => {
+//     return
+// };
+
+// export const getOwner = async () => {
+//     return
+// };
+
+export const getGames = async (req: Request, res: Response) => { 
+    const { groupId } = req.params;
+
+    try {
+        const games = await Game.findAll({
+            include: [{
+                model: Group,
+                where: { id: groupId },
+                through: { attributes: [] },
+            }]
+        });
+
+        if (!games) {
+            res.status(404).json({ message: 'No games found.' });
+        }
+
+        res.status(201).json(games);
+    } catch (err: any) {
+        res.status(500).json({ message: err.message });
+    }
 };
 
-export const getMemberById = async () => {
-    return
-};
+export const addGameToGroup = async (req: Request, res: Response) => {   
+    try {
+        const { gameId } = req.body.game; // can pass Game[]?
+        const { groupId } = req.params;
+    
+        const group = await Group.findByPk(groupId);
+        const game = await Game.findByPk(gameId);
 
-export const getOwner = async () => {
-    return
-};
+        if (!group) {
+            res.status(404).json({ message: 'Group Error.'});
+        } else if (!game) {
+            res.status(404).json({ message: 'Game not found.' });
+        } else {
+            await group.addGame(game);
+        }
 
-export const getGames = async () => {
-    return
-};
-
-export const addGames = async () => {
-    return
+        res.status(200).json({ message: 'Game added!' });
+        
+    } catch (err: any) {
+        res.status(500).json({ message: err.message });
+    }
 };
 
 export const addMember = async (req: Request, res: Response) => {
@@ -77,20 +114,20 @@ export const addMember = async (req: Request, res: Response) => {
         if (!group || !user || !level) {
             res.status(500).json({ message: 'An error occurred.' });
         } else {
-            const newAccess = await Access.create({ user, group, level })
+            await Access.create({ user, group, level });
         }
     } catch (err: any) {
         res.status(500).json({ message: err.message });
     }
 };
 
-export const deleteGame = async () => {
-    return
-};
+// export const deleteGame = async () => {
+//     return
+// };
 
-export const deleteMember = async () => {
-    return
-};
+// export const deleteMember = async () => {
+//     return
+// };
 
 // export const transferOwner = async () => {
 //     return
@@ -104,7 +141,7 @@ export const deleteMember = async () => {
 //     return
 // };
 
-export const deleteGroup = async () => {
-    return
-};
+// export const deleteGroup = async () => {
+//     return
+// };
 
