@@ -1,4 +1,5 @@
-import { DataTypes, type Sequelize, Model, type Optional } from 'sequelize';
+import { DataTypes, type Sequelize, Model, type Optional, BelongsToManyAddAssociationMixin } from 'sequelize';
+import type { Game } from './game.js';
 
 interface GroupAttributes {
     id: number;
@@ -13,6 +14,9 @@ export class Group extends Model<GroupAttributes, GroupCreationAttributes> imple
 
     public readonly createdAt!: Date;
     public readonly updatedAt!: Date;
+
+    declare addGame: BelongsToManyAddAssociationMixin<Game, Game['id']>;
+
 }
 
 export function GroupFactory(sequelize: Sequelize): typeof Group {
