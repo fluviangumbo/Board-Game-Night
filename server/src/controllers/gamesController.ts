@@ -15,9 +15,11 @@ export const getName = async () => {
 //     return
 // };
 
-export const hotGames = async (_req: Request, _res: Response) => {
-    return;
-}
+// export const hotGames = async (_req: Request, _res: Response) => {
+//     return;
+// }
+
+
 
 // export const getDetails = async (_req: Request, _res: Response) => {
 //     const game = await Game.findOne();

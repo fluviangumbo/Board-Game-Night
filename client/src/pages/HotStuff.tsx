@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Table, Spinner } from "react-bootstrap";
 import axios from "axios"; // or you can use fetch
 
