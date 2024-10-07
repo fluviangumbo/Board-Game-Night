@@ -33,3 +33,52 @@ const TimeInput = () => {
 };
 
 export default TimeInput;
+// import React, { useState } from 'react';
+
+// const DateTimeEntry = () => {
+//   const [date, setDate] = useState('');
+//   const [time, setTime] = useState('');
+
+//   const handleDateChange = (e) => {
+//     setDate(e.target.value);
+//   };
+
+//   const handleTimeChange = (e) => {
+//     setTime(e.target.value);
+//   };
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     console.log(`Selected Date: ${date}, Selected Time: ${time}`);
+//     // Handle form submission, you could send the data to a server, etc.
+//     alert(`Selected Date: ${date}, Selected Time: ${time}`);
+//   };
+
+//   return (
+//     <form onSubmit={handleSubmit}>
+//       <div>
+//         <label htmlFor="date">Date: </label>
+//         <input
+//           type="date"
+//           id="date"
+//           value={date}
+//           onChange={handleDateChange}
+//           required
+//         />
+//       </div>
+//       <div>
+//         <label htmlFor="time">Time: </label>
+//         <input
+//           type="time"
+//           id="time"
+//           value={time}
+//           onChange={handleTimeChange}
+//           required
+//         />
+//       </div>
+//       <button type="submit">Submit</button>
+//     </form>
+//   );
+// };
+
+// export default DateTimeEntry; PLEASE REVIEW THIS CODE AND SEE IF IT CAN BE USED INSTEAD OF THE ABOVE CODE
