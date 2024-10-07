@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import React, { FormEvent } from "react";
 import { FormGroup } from "react-bootstrap";
 
-const Summary = () => {
+const SummaryForm = () => {
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
@@ -87,4 +87,4 @@ const Summary = () => {
   );
 };
 
-export default Summary;
+export default SummaryForm;

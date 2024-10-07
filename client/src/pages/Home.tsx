@@ -5,6 +5,8 @@ import ErrorPage from "./ErrorPage";
 // import UserList from "../components/Users";
 import auth from "../utils/auth";
 import { Link } from "react-router-dom";
+import Header from "../components/header";
+
 
 const Home = () => {
   const [users, setUsers] = useState<UserData[]>([]);
@@ -31,6 +33,7 @@ const Home = () => {
     try {
       const data = await retrieveUsers();
       setUsers(data);
+      console.log(users);
     } catch (err) {
       console.error("Failed to retrieve tickets:", err);
       setError(true);
@@ -43,6 +46,9 @@ const Home = () => {
 
   return (
     <>
+    <div>
+      <Header />
+    </div>
       <div className="display-flex justify-space-between align-center py-2 px-5 login-notice">
         <h1>Login to view all your friends!</h1>
         <div className="login-button">
@@ -60,6 +66,9 @@ const Home = () => {
                 Sign Up
               </button>
             </Link>
+          </div>
+          <div>
+            
           </div>
         </div>
       {/* // ) : (
