@@ -1,6 +1,7 @@
 import { seedUsers } from './user-seeds.js';
 import { seedGroups } from './group-seeds.js';
 import { seedAccess } from './access-seeds.js';
+import { seedGames } from './game-seeds.js';
 import sequelize from '../config/connection.js';
 
 const seedAll = async (): Promise<void> => {
@@ -17,6 +18,10 @@ const seedAll = async (): Promise<void> => {
     await seedAccess();
     console.log('\n----- ACCESS SEEDED -----\n');
 
+    await seedGames();
+    console.log('\n----- GAMES SEEDED -----\n');
+
+    console.log('\nDatabase successfully seeded.\n');
     process.exit(0);
   } catch (error) {
     console.error('Error seeding database:', error);
