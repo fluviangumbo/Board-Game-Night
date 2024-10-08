@@ -7,7 +7,6 @@ import auth from "../utils/auth";
 import { Link } from "react-router-dom";
 import Header from "../components/header";
 
-
 const Home = () => {
   const [users, setUsers] = useState<UserData[]>([]);
   const [error, setError] = useState(false);
@@ -46,35 +45,35 @@ const Home = () => {
 
   return (
     <>
-    <div>
-      <Header />
-    </div>
-      <div className="display-flex justify-space-between align-center py-2 px-5 login-notice">
-        <h1>Login to view all your friends!</h1>
-        <div className="login-button">
-          <button className="btn" type="button">
-            <Link to="/login">Login</Link>
-          </button>
-        </div>
+      <div>
+        <Header />
       </div>
-      {/* {!loginCheck ? ( */}
+      <div className="login-container">
+        <div className="display-flex justify-space-between align-center py-2 px-5 login-notice">
+          <h1>Login to view all your friends!</h1>
+          <div className="login-button">
+            <button className="btn custom-button" type="button">
+              <Link to="/login">Login</Link>
+            </button>
+          </div>
+        </div>
+        {/* {!loginCheck ? ( */}
         <div className="login-notice">
           <h3>or sign up</h3>
-          <div className="login-button">
+          <div className="login-button custom-button">
             <Link to="/signup">
               <button className="btn" type="button">
                 Sign Up
               </button>
             </Link>
           </div>
-          <div>
-            
-          </div>
+          <div></div>
         </div>
+      </div>
+
       {/* // ) : (
       //   <UserList users={users} />
       // )} */}
-      
     </>
   );
 };
