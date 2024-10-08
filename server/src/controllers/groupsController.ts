@@ -1,5 +1,6 @@
 import type { Request, Response } from 'express';
 import { Group, Access, Game } from '../models/index.js';
+import { JwtPayload } from '../middleware/auth.js';
 
 // TODO: Code out the controller functions for groups
 // export const getGroups = async () => {
@@ -24,8 +25,8 @@ export const getGroupById = async (req: Request, res: Response) => {
 };
 
 export const createGroup = async (req: Request, res: Response) => {
-    const { name } = req.body.groupName;
-    const { user } = req.body.creatorId;
+    const { name } = req.body;
+    const user = req.user as JwtPayload;
     try {
         const newGroup = await Group.create({ name });
         const group = newGroup.id;
@@ -33,7 +34,7 @@ export const createGroup = async (req: Request, res: Response) => {
 
         // @ts-ignore
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        const newAccess = await Access.create({ user, group, level }); // Shouldn't matter that we don't reference this
+        const newAccess = await Access.create({ user: user.id, group, level });
 
         res.status(201).json(newGroup);
     } catch (err: any) {

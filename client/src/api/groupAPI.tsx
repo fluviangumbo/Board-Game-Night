@@ -1,25 +1,26 @@
-// import type { Request, Response } from 'express';
-// // import type { Group } from '../interfaces/Group';
-// // import type { Access } from '../interfaces/Access';
-// //Still having some issues here
+// import type { Access } from '../interfaces/Access';
+import Auth from '../utils/auth';
+import { GroupCreate } from "../interfaces/Group";
 
+export const makeGroup = async (groupInfo: GroupCreate) => {
+    try {
+        const response = await fetch('/api/groups', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${Auth.getToken()}`
+            },
+            body: JSON.stringify(groupInfo),
+        });
 
-// export const createGroup = async (req: Request, res: Response) => {
-//     const { name } = req.body.groupName;
-//     const { user } = req.body.creatorId;
-//     try {
-//         const newGroup = await Group.create({ name });
-//         const group = newGroup.id;
-//         const level = 'Owner';
+        if (!response.ok) {
+            throw new Error('Could not create group, check network tab!');
+        }
+        
+        const data = await response.json();
 
-//         // @ts-ignore
-//         // eslint-disable-next-line @typescript-eslint/no-unused-vars
-//         const newAccess = await Access.create({ user, group, level }); // Shouldn't matter that we don't reference this
-
-//         res.status(201).json(newGroup);
-//     } catch (err: any) {
-//         res.status(500).json({ message: err.message });
-//     }
-// };
-
-// MIGHT NEED TO TROUBLESHOOT THIS WITH IAN/ELI
+        return data;
+    } catch (err) {
+        console.log('Error creating group: ', err);
+    }
+}

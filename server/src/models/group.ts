@@ -30,6 +30,7 @@ export function GroupFactory(sequelize: Sequelize): typeof Group {
             name: {
                 type: DataTypes.STRING,
                 allowNull: false,
+                unique: true,
             },
         },
         {

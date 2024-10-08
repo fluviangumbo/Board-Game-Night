@@ -1,6 +1,3 @@
-export interface Group {
-    id: number;
+export interface GroupCreate {
     name: string;
 }
-
-// Not sure of Approach here
