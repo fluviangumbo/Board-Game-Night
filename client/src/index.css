@@ -35,6 +35,7 @@ main {
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
+  text-align: center;
 }
 
 /* Grouping content
@@ -377,4 +378,28 @@ body {
   align-items: center; /* Centers vertically */
   text-align: center;
   padding: 10px;
+}
+
+.header {
+  display: center;
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+  text-align: center;
+  background-color: #f0f8ff; /* Light background color */
+  padding: 20px;             /* Inner spacing */
+  border-radius: 15px;        /* Curved corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  width: 30%;                /* Width of the container */
+  margin: 20px auto;    
+}
+
+.tagline {
+  display: block;
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+  text-align: center;
+}
+
+.name{
+  display:block;
 }
