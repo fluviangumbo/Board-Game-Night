@@ -10,6 +10,7 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel'
 const Login = () => {
   const [loginData, setLoginData] = useState<UserLogin>({
     username: '',
+    email: '',
     password: '',
   });
 
@@ -27,7 +28,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const data = await login(loginData);
-      Auth.login(data.token);
+      Auth.login(data.token); //localStorage
     } catch (err) {
       console.error('Failed to login', err);
     }
@@ -38,22 +39,33 @@ const Login = () => {
       <form className="form login-form login-container" onSubmit={handleSubmit}>
         <h1>Login</h1>
         <div className="form-group">
+          <Form.Label>Username</Form.Label>
+          <FloatingLabel
+            controlId="floatingName"
+            label="Username"
+            className="mb-3"
+          >
+            <Form.Control type="Username" name="username" placeholder="John Doe" onChange={handleChange}/>
+          </FloatingLabel>
+        </div>
+        <div className="form-group">
           <Form.Label>Email address</Form.Label>
           <FloatingLabel
-            controlId="floatingInput"
+            controlId="floatingEmail"
             label="Email address"
             className="mb-3"
           >
-            <Form.Control type="email" placeholder="name@example.com" />
+            <Form.Control type="email" name="email" placeholder="name@example.com" onChange={handleChange}/>
           </FloatingLabel>
         </div>
         <div className="form-group">
           <Form.Label>Password</Form.Label>
           <FloatingLabel controlId="floatingPassword" label="Password">
-            <Form.Control type="password" placeholder="Password" onChange={handleChange}/>
+            <Form.Control type="password" name="password" placeholder="Password" onChange={handleChange}/>
           </FloatingLabel>
         </div>
         <div className="form-group">
+
           <Form.Group className="mb-3 remember" controlId="formBasicCheckbox">
              <Form.Check type="checkbox" label="Remember Me" />
             {" "}
