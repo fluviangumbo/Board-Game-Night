@@ -418,3 +418,104 @@ body {
 .remember {
   text-align: left;
 }
+
+.custom-button {
+  background-color: #007bff;   /* Primary blue background */
+  color: white;                /* White text */
+  padding: 10px 20px;          /* Padding for the button */
+  border: none;                /* No border */
+  border-radius: 5px;          /* Rounded corners */
+  font-size: 16px;             /* Font size */
+  cursor: pointer;             /* Cursor change on hover */
+  transition: background-color 0.3s ease, transform 0.2s ease;  /* Smooth transitions */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* Subtle shadow */
+}
+
+.custom-button:hover {
+  background-color: #0056b3;   /* Darker blue on hover */
+  transform: translateY(-2px); /* Slightly lift the button */
+}
+
+.custom-button:active {
+  background-color: #004085;   /* Even darker blue when clicked */
+  transform: translateY(0);    /* Reset the transform */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  /* Slightly smaller shadow */
+}
+
+.custom-button:focus {
+  outline: none;               /* Remove default focus outline */
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); /* Add custom focus outline */
+}
+
+.custom-light-button {
+  background-color: #f8f9fa;    /* Light gray background (Bootstrap light) */
+  color: #212529;               /* Dark text (Bootstrap dark) */
+  padding: 10px 20px;           /* Padding for the button */
+  border: 1px solid #ced4da;    /* Subtle border */
+  border-radius: 5px;           /* Rounded corners */
+  font-size: 16px;              /* Font size */
+  cursor: pointer;              /* Pointer on hover */
+  transition: background-color 0.3s ease, transform 0.2s ease;  /* Smooth transition */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* Subtle shadow for depth */
+  max-width: 75px;
+  text-align: center;
+  align-items: center;}
+
+.custom-light-button:hover {
+  background-color: #e2e6ea;    /* Darker gray on hover */
+  transform: translateY(-1px);  /* Slightly lift the button */
+}
+
+.custom-light-button:active {
+  background-color: #dae0e5;    /* Slightly darker gray on click */
+  transform: translateY(0);     /* Reset transform */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  /* Slightly smaller shadow */
+}
+
+.custom-light-button:focus {
+  outline: none;                /* Remove default focus outline */
+  box-shadow: 0 0 0 3px rgba(130, 138, 145, 0.5); /* Custom focus shadow */
+}
+
+.container-bx {
+  /* background-color: #f1f7c8; Light background color */
+  padding: 20px;             /* Inner spacing */
+  border-radius: 15px;        /* Curved corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  width: 50%;                /* Width of the container */
+  margin: 20px auto;    
+  text-align: center;
+  align-items: center;
+ font-weight: bold; 
+}
+
+.custom-card {
+  background-color: #f8f9fa;          /* Light gray background */
+  border: 1px solid #ced4da;          /* Light border */
+  border-radius: 10px;                /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: transform 0.3s;         /* Transition for hover effect */
+}
+
+.custom-card:hover {
+  transform: translateY(-5px);        /* Lift effect on hover */
+}
+
+.card-title {
+  font-family: 'Poppins', sans-serif; /* Modern font */
+  font-size: 2rem;                    /* Large title */
+  color: #007bff;                     /* Blue title color */
+  text-align: center;                 /* Center the title */
+  margin-bottom: 15px;                /* Spacing below the title */
+}
+
+.card-text {
+  font-family: 'Arial', sans-serif;   /* Default font for text */
+  font-size: 1.2rem;                  /* Slightly larger text */
+  color: #212529;                     /* Dark gray text */
+  margin-bottom: 10px;                /* Space between text items */
+}
+
+.card-text strong {
+  color: #007bff;                     /* Blue color for bold text */
+}

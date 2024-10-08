@@ -33,7 +33,7 @@ const MeetingForm = ({onSubmit}: { onSubmit: (data: MeetingData) => void }) => {
   };
 
   return (
-    <Form onSubmit={handleSubmit} className="p-4">
+    <Form onSubmit={handleSubmit} className="p-4 container-bx">
       <Row className="mb-3">
         <Form.Group as={Col} controlId="formDayOfWeek">
           <Form.Label>Day of the Week</Form.Label>
