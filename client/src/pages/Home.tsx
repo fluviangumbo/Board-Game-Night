@@ -52,7 +52,7 @@ const Home = () => {
         <div className="display-flex justify-space-between align-center py-2 px-5 login-notice">
           <h1>Login to view all your friends!</h1>
           <div className="login-button">
-            <button className="btn custom-button" type="button">
+            <button className="btn btn-light" type="button">
               <Link to="/login">Login</Link>
             </button>
           </div>
@@ -60,7 +60,7 @@ const Home = () => {
         {/* {!loginCheck ? ( */}
         <div className="login-notice">
           <h3>or sign up</h3>
-          <div className="login-button custom-button">
+          <div className="login-button custom-light-button">
             <Link to="/signup">
               <button className="btn" type="button">
                 Sign Up

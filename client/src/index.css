@@ -446,3 +446,33 @@ body {
   outline: none;               /* Remove default focus outline */
   box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); /* Add custom focus outline */
 }
+
+.custom-light-button {
+  background-color: #f8f9fa;    /* Light gray background (Bootstrap light) */
+  color: #212529;               /* Dark text (Bootstrap dark) */
+  padding: 10px 20px;           /* Padding for the button */
+  border: 1px solid #ced4da;    /* Subtle border */
+  border-radius: 5px;           /* Rounded corners */
+  font-size: 16px;              /* Font size */
+  cursor: pointer;              /* Pointer on hover */
+  transition: background-color 0.3s ease, transform 0.2s ease;  /* Smooth transition */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* Subtle shadow for depth */
+  max-width: 75px;
+  text-align: center;
+  align-items: center;}
+
+.custom-light-button:hover {
+  background-color: #e2e6ea;    /* Darker gray on hover */
+  transform: translateY(-1px);  /* Slightly lift the button */
+}
+
+.custom-light-button:active {
+  background-color: #dae0e5;    /* Slightly darker gray on click */
+  transform: translateY(0);     /* Reset transform */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  /* Slightly smaller shadow */
+}
+
+.custom-light-button:focus {
+  outline: none;                /* Remove default focus outline */
+  box-shadow: 0 0 0 3px rgba(130, 138, 145, 0.5); /* Custom focus shadow */
+}
