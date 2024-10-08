@@ -23,4 +23,26 @@ const login = async (userInfo: UserLogin) => {
   }
 };
 
-export { login };
+const signUp = async (newUser: UserLogin) => {
+  try {
+    const response = await fetch('/auth/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newUser),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error('Could not create user, check network tab!');
+    }
+
+    return data;
+  } catch (err) {
+    console.log('Error from sign up: ', err);
+  }
+}
+
+export { login, signUp };

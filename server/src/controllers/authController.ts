@@ -4,10 +4,10 @@ import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 
 export const login = async (req: Request, res: Response) => {
-  const { username, password } = req.body;
+  const { email, password } = req.body;
 
   const user = await User.findOne({
-    where: { username },
+    where: { email },
   });
 
   if (!user) {
@@ -21,7 +21,21 @@ export const login = async (req: Request, res: Response) => {
 
   const secretKey = process.env.JWT_SECRET_KEY || '';
 
-  const token = jwt.sign({ id: user.id, username }, secretKey, { expiresIn: '1d' });
+  const token = jwt.sign({ id: user.id, username: user.username }, secretKey, { expiresIn: '1d' });
   
   return res.json({ token });
+};
+
+export const createUser = async (req: Request, res: Response) => {
+  const { username, email, password } = req.body;
+  try {
+    const newUser = await User.create({ username, email, password });
+    const secretKey = process.env.JWT_SECRET_KEY || '';
+
+    const token = jwt.sign({ id: newUser.id, username: newUser.username }, secretKey, { expiresIn: '1d' });
+  
+    return res.json({ token });
+  } catch (error: any) {
+    return res.status(400).json({ message: error.message });
+  }
 };
