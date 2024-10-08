@@ -403,3 +403,18 @@ body {
 .name{
   display:block;
 }
+
+.login-container {
+  background-color: #f1f7c8; /* Light background color */
+  padding: 20px;             /* Inner spacing */
+  border-radius: 15px;        /* Curved corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  width: 50%;                /* Width of the container */
+  margin: 20px auto;    
+  text-align: center;
+  align-items: center;
+}
+
+.remember {
+  text-align: left;
+}
