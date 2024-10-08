@@ -1,86 +1,86 @@
-import { useState, type FormEvent } from "react";
-import Auth from "../utils/auth";
-import { login } from "../api/authAPI";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import FloatingLabel from "react-bootstrap/FloatingLabel";
-import type { Group } from "../interfaces/Group";
+// import { useState, type FormEvent } from "react";
+// import Auth from "../utils/auth";
+// import { login } from "../api/authAPI";
+// import Button from "react-bootstrap/Button";
+// import Form from "react-bootstrap/Form";
+// import FloatingLabel from "react-bootstrap/FloatingLabel";
+// import type { Group } from "../interfaces/Group";
 
 const GroupCreation = () => {
-  const [groupData, setGroupData] = useState<Group>({
-    members: [],
-    games: [],
-  });
+//   const [groupData, setGroupData] = useState<Group>({
+//     // members: [],
+//     // games: [],
+//   });
 
-  const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement
-    >
-  ) => {
-    const { name, value } = e.target;
-    setGroupData({
-      ...groupData,
-      [name]: value,
-    });
-  };
+//   const handleChange = (
+//     e: React.ChangeEvent<
+//       HTMLInputElement
+//     >
+//   ) => {
+//     const { name, value } = e.target;
+//     setGroupData({
+//       ...groupData,
+//       [name]: value,
+//     });
+//   };
 
 
 
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    try {
-      const data = await login(groupData);
-      Auth.login(data.token);
-      console.log("Group created successfully");
-    } catch (err) {
-      console.error("Failed to create group", err);
-    }
-  };
+//   const handleSubmit = async (e: FormEvent) => {
+//     e.preventDefault();
+//     try {
+//       const data = await login(groupData);
+//       Auth.login(data.token);
+//       console.log("Group created successfully");
+//     } catch (err) {
+//       console.error("Failed to create group", err);
+//     }
+//   };
 
-  return (
-    <div className="form-container">
-      <form onSubmit={handleSubmit}>
-        <h2>Create a New Group</h2>
-        <div className="form-group">
-          <FloatingLabel
-            controlId="floatingInput"
-            label="Group Name"
-            className="mb-3"
-          >
-            <Form.Control
-              type="email"
-              name="username"
-              placeholder="name@example.com"
-              value={groupData.username ?? ''}
-              onChange={handleChange}
-              required
-            />
-          </FloatingLabel>
-        </div>
-        <div className="form-group">
-          <FloatingLabel
-            controlId="floatingID"
-            label="Mythical Adult Friends"
-            className="mb-3"
-          >
-            <Form.Control
-              type="members"
-              name="members"
-              placeholder="members"
-              value={groupData.members ?? ''}
-              onChange={handleChange}
-              required
-            />
-          </FloatingLabel>
-        </div>
-          <Button variant="primary" type="submit">
-            Create Group
-          </Button>
-      </form>
-    </div>
-  );
-};
+//   return (
+//     <div className="form-container">
+//       <form onSubmit={handleSubmit}>
+//         <h2>Create a New Group</h2>
+//         <div className="form-group">
+//           <FloatingLabel
+//             controlId="floatingInput"
+//             label="Group Name"
+//             className="mb-3"
+//           >
+//             <Form.Control
+//               type="email"
+//               name="username"
+//               placeholder="name@example.com"
+//               value={groupData.username ?? ''}
+//               onChange={handleChange}
+//               required
+//             />
+//           </FloatingLabel>
+//         </div>
+//         <div className="form-group">
+//           <FloatingLabel
+//             controlId="floatingID"
+//             label="Mythical Adult Friends"
+//             className="mb-3"
+//           >
+//             <Form.Control
+//               type="members"
+//               name="members"
+//               placeholder="members"
+//               value={groupData.members ?? ''}
+//               onChange={handleChange}
+//               required
+//             />
+//           </FloatingLabel>
+//         </div>
+//           <Button variant="primary" type="submit">
+//             Create Group
+//           </Button>
+//       </form>
+//     </div>
+//   );
 // };
+};
 
 export default GroupCreation;
 
