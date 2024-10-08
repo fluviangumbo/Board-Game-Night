@@ -60,12 +60,10 @@ const Home = () => {
         {/* {!loginCheck ? ( */}
         <div className="login-notice">
           <h3>or sign up</h3>
-          <div className="login-button custom-light-button">
-            <Link to="/signup">
-              <button className="btn" type="button">
-                Sign Up
-              </button>
-            </Link>
+          <div className="login-button">
+          <button className="btn btn-light" type="button">
+          <Link to="/signup">Sign Up</Link>
+          </button>
           </div>
           <div></div>
         </div>
