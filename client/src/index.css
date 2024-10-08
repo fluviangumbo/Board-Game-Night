@@ -476,3 +476,46 @@ body {
   outline: none;                /* Remove default focus outline */
   box-shadow: 0 0 0 3px rgba(130, 138, 145, 0.5); /* Custom focus shadow */
 }
+
+.container-bx {
+  /* background-color: #f1f7c8; Light background color */
+  padding: 20px;             /* Inner spacing */
+  border-radius: 15px;        /* Curved corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  width: 50%;                /* Width of the container */
+  margin: 20px auto;    
+  text-align: center;
+  align-items: center;
+ font-weight: bold; 
+}
+
+.custom-card {
+  background-color: #f8f9fa;          /* Light gray background */
+  border: 1px solid #ced4da;          /* Light border */
+  border-radius: 10px;                /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: transform 0.3s;         /* Transition for hover effect */
+}
+
+.custom-card:hover {
+  transform: translateY(-5px);        /* Lift effect on hover */
+}
+
+.card-title {
+  font-family: 'Poppins', sans-serif; /* Modern font */
+  font-size: 2rem;                    /* Large title */
+  color: #007bff;                     /* Blue title color */
+  text-align: center;                 /* Center the title */
+  margin-bottom: 15px;                /* Spacing below the title */
+}
+
+.card-text {
+  font-family: 'Arial', sans-serif;   /* Default font for text */
+  font-size: 1.2rem;                  /* Slightly larger text */
+  color: #212529;                     /* Dark gray text */
+  margin-bottom: 10px;                /* Space between text items */
+}
+
+.card-text strong {
+  color: #007bff;                     /* Blue color for bold text */
+}

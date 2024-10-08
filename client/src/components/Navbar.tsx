@@ -41,6 +41,9 @@ const Navbar = () => {
         <button className='btn' type='button'>
           <Link to='/groups'>Groups</Link>
         </button>
+        <button className='btn' type='button'>
+          <Link to='/calendar'>Create an Event</Link>
+        </button>
       </div>
     </div>
   );
