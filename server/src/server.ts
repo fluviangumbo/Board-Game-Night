@@ -9,6 +9,7 @@ const PORT = process.env.PORT || 3001;
 app.use(express.static('../client/dist'));
 
 app.use(express.json()); //ADD FORM MIDDLEWARE? For file uploads, could impact Render deploy, 3rd party like S3 or Firebase could solve that
+
 app.use(routes);
 
 sequelize.sync().then(() => {

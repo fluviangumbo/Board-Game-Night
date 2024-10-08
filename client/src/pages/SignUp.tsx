@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from "react";
 import Auth from "../utils/auth";
-import { login } from "../api/authAPI";
+import { signUp } from "../api/authAPI";
 import type { UserLogin } from "../interfaces/UserLogin";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -9,6 +9,7 @@ import FloatingLabel from "react-bootstrap/FloatingLabel";
 const SignUp = () => {
   const [userData, setUserData] = useState<UserLogin>({
     username: "",
+    email: "",
     password: "",
   });
 
@@ -27,7 +28,7 @@ const SignUp = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      const data = await login(userData);
+      const data = await signUp(userData);
       Auth.login(data.token);
       console.log("User created successfully");
     } catch (err) {
@@ -41,15 +42,30 @@ const SignUp = () => {
         <h2>Create a New Account</h2>
         <div className="form-group">
           <FloatingLabel
-            controlId="floatingInput"
+            controlId="floatingName"
+            label="Username"
+            className="mb-3"
+          >
+            <Form.Control
+              name="username"
+              placeholder="John Doe"
+              value={userData.username ?? ''}
+              onChange={handleChange}
+              required
+            />
+          </FloatingLabel>
+        </div>
+        <div className="form-group">
+          <FloatingLabel
+            controlId="floatingEmail"
             label="Email"
             className="mb-3"
           >
             <Form.Control
               type="email"
-              name="username"
+              name="email"
               placeholder="name@example.com"
-              value={userData.username ?? ''}
+              value={userData.email ?? ''}
               onChange={handleChange}
               required
             />
