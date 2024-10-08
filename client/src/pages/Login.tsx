@@ -36,7 +36,7 @@ const Login = () => {
 
   return (
 <div className="form-container">
-      <form className="form login-form" onSubmit={handleSubmit}>
+      <form className="form login-form login-container" onSubmit={handleSubmit}>
         <h1>Login</h1>
         <div className="form-group">
           <Form.Label>Username</Form.Label>
@@ -65,12 +65,13 @@ const Login = () => {
           </FloatingLabel>
         </div>
         <div className="form-group">
-          <Form.Group className="mb-3" controlId="formBasicCheckbox">
-            <Form.Check type="checkbox" label="Remember Me" />
+
+          <Form.Group className="mb-3 remember" controlId="formBasicCheckbox">
+             <Form.Check type="checkbox" label="Remember Me" />
             {" "}
           </Form.Group>
           {" "}
-          <Button variant="primary" type="submit">
+          <Button variant="primary" type="submit" className="custom-button">
             Submit{" "}
           </Button>
         </div>

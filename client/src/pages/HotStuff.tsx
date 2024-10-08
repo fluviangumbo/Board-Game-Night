@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Table, Spinner } from "react-bootstrap";
+import { Table, Spinner, Container, Row, Col, Card } from "react-bootstrap";
 import axios from "axios"; // or you can use fetch
 
 const HotGames = () => {
@@ -29,47 +29,50 @@ const HotGames = () => {
     }, []);
 
     return (
-        <div className="p-3">
-            <h2>Hot Board Games</h2>
-            {loading ? (
-                <Spinner animation="border" role="status">
-                    <span className="visually-hidden">Loading...</span>
-                </Spinner>
-            ) : (
-                <Table striped bordered hover>
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Title</th>
-                            <th>Year Published</th>
-                            <th>Rank</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {games.map((game, index) => (
-                            <tr key={game.gameId}>
-                                <td>{index + 1}</td>
-                                <td>{game.name}</td>
-                                <td>{game.yearPublished}</td>
-                                <td>{game.rank}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </Table>
-            )}
-        </div>
+        <Container className="py-5">
+            <Row>
+                <Col className="text-center mb-4">
+                    <h2 className="display-6">Hot Board Games</h2>
+                </Col>
+            </Row>
+            <Row className="justify-content-center">
+                <Col md={8}>
+                    {loading ? (
+                        <div className="d-flex justify-content-center">
+                            <Spinner animation="border" role="status" className="text-primary">
+                                <span className="visually-hidden">Loading...</span>
+                            </Spinner>
+                        </div>
+                    ) : (
+                        <Card className="shadow-lg">
+                            <Card.Body>
+                                <Table striped bordered hover responsive="sm">
+                                    <thead className="table-dark">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Title</th>
+                                            <th>Year Published</th>
+                                            <th>Rank</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {games.map((game, index) => (
+                                            <tr key={game.gameId}>
+                                                <td>{index + 1}</td>
+                                                <td>{game.name}</td>
+                                                <td>{game.yearPublished}</td>
+                                                <td>{game.rank}</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </Table>
+                            </Card.Body>
+                        </Card>
+                    )}
+                </Col>
+            </Row>
+        </Container>
     );
 };
-
-// const App = () => {
-//     return (
-//       <div className="App">
-//         <h1>Board Games List</h1>
-//         <GamesTable />
-//       </div>
-//     );
-//   };    ------------possible use for displaying the games
-
-//export default App;
 
 export default HotGames;

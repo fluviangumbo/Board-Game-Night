@@ -37,7 +37,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="form-container">
+    <div className="form-container login-container">
       <form onSubmit={handleSubmit}>
         <h2>Create a New Account</h2>
         <div className="form-group">
@@ -88,16 +88,16 @@ const SignUp = () => {
           </FloatingLabel>
         </div>
         <div className="form-group">
-          <Form.Group className="mb-3" controlId="formBasicCheckbox">
-            //{" "}
+          <Form.Group className="mb-3 remember" controlId="formBasicCheckbox">
+            
             <Form.Check
               type="checkbox"
               label="Check the box to agree to the terms and conditions."
             />
-            //{" "}
+            
           </Form.Group>
-          //{" "}
-          <Button variant="primary" type="submit">
+          
+          <Button variant="primary" type="submit" className="custom-button">
             Create Account
           </Button>
         </div>
