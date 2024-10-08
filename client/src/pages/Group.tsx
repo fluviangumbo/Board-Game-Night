@@ -1,5 +1,5 @@
 import React from 'react';
-import Group from './Group';
+import Group from '../components/Group';
 
 const App: React.FC = () => {
     const initialUsers = ['Alice', 'Bob', 'Charlie'];

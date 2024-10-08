@@ -1,31 +1,44 @@
 import React, { useState } from 'react';
-import AddUserForm from 'AddUserForm'; // Ensure this path is correct
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-interface GroupProps {
-    groupName: string;
-    users: string[];
+interface AddUserFormProps {
+  onAddUser: (username: string) => void;
 }
 
-const Group: React.FC<GroupProps> = ({ groupName, users }) => {
-    const [groupUsers, setGroupUsers] = useState<string[]>(users);
+const AddUserForm: React.FC<AddUserFormProps> = ({ onAddUser }) => {
+  const [username, setUsername] = useState<string>('');
+  const [error, setError] = useState<string | null>(null);
 
-    const handleAddUser = (username: string) => {
-        setGroupUsers([...groupUsers, username]);
-    };
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
 
-    return (
-        <div className="container mt-5">
-            <h1>Group: {groupName}</h1>
-            <ul className="list-group mb-3">
-                {groupUsers.map((user, index) => (
-                    <li key={index} className="list-group-item">
-                        {user}
-                    </li>
-                ))}
-            </ul>
-            <AddUserForm onAddUser={handleAddUser} />
-        </div>
-    );
+    if (username.trim() === '') {
+      setError('Username cannot be empty.');
+      return;
+    }
+
+    onAddUser(username);
+    setUsername('');  // Clear the input field after submission
+    setError(null);   // Reset the error message
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="mt-3">
+      <div className="mb-3">
+        <label htmlFor="username" className="form-label">Add User:</label>
+        <input
+          type="text"
+          className="form-control"
+          id="username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Enter username"
+        />
+        {error && <div className="text-danger mt-1">{error}</div>}
+      </div>
+      <button type="submit" className="btn btn-primary">Add User</button>
+    </form>
+  );
 };
 
-export default Group;
+export default AddUserForm;
