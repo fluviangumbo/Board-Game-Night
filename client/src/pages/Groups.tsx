@@ -3,10 +3,10 @@ import { makeGroup } from "../api/groupAPI";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
-import type { GroupCreate } from "../interfaces/Group";
+import type { GroupData } from "../interfaces/Group";
 
 const GroupCreation = () => {
-  const [groupData, setGroupData] = useState<GroupCreate>({
+  const [groupData, setGroupData] = useState<GroupData>({
     name: "",
   });
 
