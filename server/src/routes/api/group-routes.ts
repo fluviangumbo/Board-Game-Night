@@ -1,17 +1,17 @@
 import express from 'express';
-import { createGroup, getGroupById, addMember, getGames, addGameToGroup } from '../../controllers/groupsController.js';
+import { createGroup, getGroupByName, addMember } from '../../controllers/groupsController.js';
 
 
 const router = express.Router();
 
-router.get('/:id', getGroupById);
+router.get('/:name', getGroupByName);
 
 router.post('/', createGroup);
 
-router.put('/:id', addMember);
+router.post('/:name/:email', addMember);
 
-router.get('/:id', getGames);
+// router.get('/:id', getGames);
 
-router.put('/:id', addGameToGroup);
+// router.put('/:id', addGameToGroup);
 
 export { router as groupRouter };

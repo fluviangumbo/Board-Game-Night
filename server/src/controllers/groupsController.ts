@@ -1,5 +1,5 @@
 import type { Request, Response } from 'express';
-import { Group, Access, Game } from '../models/index.js';
+import { Group, Access, Game, User } from '../models/index.js';
 import { JwtPayload } from '../middleware/auth.js';
 
 // TODO: Code out the controller functions for groups
@@ -7,12 +7,12 @@ import { JwtPayload } from '../middleware/auth.js';
 //     return
 // };
 
-export const getGroupById = async (req: Request, res: Response) => {
-    const { id } = req.params;
+export const getGroupByName = async (req: Request, res: Response) => {
+    const { name } = req.params;
 // Check if they can access group
 
     try {
-        const group = await Group.findByPk(id);
+        const group = await Group.findByPk(name);
 
         if (group) {
             res.json(group);
@@ -100,19 +100,28 @@ export const addGameToGroup = async (req: Request, res: Response) => {
 };
 
 export const addMember = async (req: Request, res: Response) => {
-    const { id } = req.params;
+    const { name, email } = req.params;
+    // const user = req.user as JwtPayload;
     // Need to validate this person is not already a member
     try {
-        const join = await Group.findByPk(id);
+        const join = await Group.findByPk(name);
         
         let group = null;
-        const user = req.body.user;
+        let user = null;
+        const member = await User.findByPk(email);
+        if (member) {
+            user = member.id;
+        } else {
+            res.status(500).json({ message: 'Error - user selection.' });
+        }
+
         if (join) {
             group = join.id;
         } else {
             res.status(500).json({ message: 'Error - group selection.' });
         }
-        const level = req.body.level;
+        const level = 'Member';
+        
 
         if (!group || !user || !level) {
             res.status(500).json({ message: 'An error occurred.' });

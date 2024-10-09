@@ -1,3 +1,3 @@
-export interface GroupCreate {
+export interface GroupData {
     name: string;
 }
