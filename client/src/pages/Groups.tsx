@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import type { GroupData } from "../interfaces/Group";
-import GroupFetchForm from "../components/GroupFetchForm";
+
 const GroupCreation = () => {
   const [groupData, setGroupData] = useState<GroupData>({
     name: "",

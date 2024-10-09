@@ -44,10 +44,10 @@ export const getGroup = async (groupName: GroupData) => {
     }
 }
 
-export const addUserstoGroup = async (userEmail: string) => {
-    try {
+// export const addUserstoGroup = async (userEmail: string) => {
+//     try {
         
-    } catch (err) {
-        console.log('Error adding user: ', err);
-    }
-}
+//     } catch (err) {
+//         console.log('Error adding user: ', err);
+//     }
+// }
