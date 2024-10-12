@@ -3,19 +3,37 @@ import { Group, Access, Game, User } from '../models/index.js';
 import { JwtPayload } from '../middleware/auth.js';
 
 // TODO: Code out the controller functions for groups
-// export const getGroups = async () => {
-//     return
-// };
+export const getGroups = async (_req: Request, res: Response) => {
+    const groups = await Group.findAll();
+
+    return res.json(groups);
+};
 
 export const getGroupByName = async (req: Request, res: Response) => {
     const { name } = req.params;
-// Check if they can access group
+
 
     try {
-        const group = await Group.findByPk(name);
+        const group = await Group.findOne({
+            where: { name },
+        });
+
+        const access = await Access.findAll({
+            where: { group: group?.id },
+        });
+
+        const users = [];
+        for (const a of access) {
+            const user = await User.findOne({
+                where: { id: a.user },
+                attributes: ['username']
+            });
+
+            users.push({...user?.get({plain: true}), access: a.level});
+        }
 
         if (group) {
-            res.json(group);
+            res.json({group, users});
         } else {
             res.status(404).json({ message: 'Group not found.' });
         }

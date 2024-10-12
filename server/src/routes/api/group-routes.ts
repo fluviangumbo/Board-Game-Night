@@ -1,8 +1,10 @@
 import express from 'express';
-import { createGroup, getGroupByName, addMember } from '../../controllers/groupsController.js';
+import { createGroup, getGroupByName, addMember, getGroups } from '../../controllers/groupsController.js';
 
 
 const router = express.Router();
+
+router.get('/', getGroups);
 
 router.get('/:name', getGroupByName);
 

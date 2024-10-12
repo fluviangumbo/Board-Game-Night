@@ -1,5 +1,6 @@
-import { useState, type FormEvent } from "react";
-import { makeGroup } from "../api/groupAPI";
+import { useCallback, useEffect, useState, type FormEvent } from "react";
+import { Link } from "react-router-dom";
+import { getAllGroups, makeGroup } from "../api/groupAPI";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
@@ -31,35 +32,39 @@ const GroupCreation = () => {
       console.error("Failed to create group", err);
     }
   };
-  const [groupName, setGroupName] = useState<string>('');
-  const [groupInfo, setGroupInfo] = useState<any>(null);
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState<boolean>(false);
 
-  const handleSelect = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const [existingGroups, setExistingGroups] = useState<GroupData[]>([]);
+  const initGroups = useCallback(async () => {
+    const groups = await getAllGroups();
+    setExistingGroups(groups);
+  }, [])
 
-    if (groupName.trim() === '') {
-      setError('Group name cannot be empty.');
-      return;
-    }
+  useEffect(() => {initGroups()}, []);
 
-    setLoading(true);
-    setError(null); // Reset the error message
+  // const handleSelect = async (event: React.FormEvent<HTMLFormElement>) => {
+  //   event.preventDefault();
 
-    try {
-      const response = await fetch(`/api/groups/${groupName}`);
-      if (!response.ok) {
-        throw new Error('Failed to fetch group.');
-      }
-      const data = await response.json();
-      setGroupInfo(data);
-    } catch (error) {
-      setError((error as Error).message);
-    } finally {
-      setLoading(false);
-    }
-  };
+  //   if (groupName.trim() === '') {
+  //     setError('Group name cannot be empty.');
+  //     return;
+  //   }
+
+  //   setLoading(true);
+  //   setError(null); // Reset the error message
+
+  //   try {
+  //     const response = await fetch(`/api/groups/${groupName}`);
+  //     if (!response.ok) {
+  //       throw new Error('Failed to fetch group.');
+  //     }
+  //     const data = await response.json();
+  //     setGroupInfo(data);
+  //   } catch (error) {
+  //     setError((error as Error).message);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
   return (
     <div>
@@ -88,6 +93,16 @@ const GroupCreation = () => {
         </form>
       </div>
       <div className="container mt-5">
+        <h2>All Groups</h2>
+        <div className="mb-3">
+          <ul>
+            {existingGroups.map((group, index) => (
+              <li key={index}><Link to={`/groups/${group.name}`}>{group.name}</Link></li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      {/* <div className="container mt-5">
         <h2>Fetch Group Details</h2>
         <form onSubmit={handleSelect}>
           <div className="mb-3">
@@ -112,7 +127,7 @@ const GroupCreation = () => {
             <pre>{JSON.stringify(groupInfo, null, 2)}</pre>
           </div>
         )}
-      </div>
+      </div> */}
     </div>
   );
 };
