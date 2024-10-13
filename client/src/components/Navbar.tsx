@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import auth from "../utils/auth";
-import "bootstrap/dist/css/bootstrap.min.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'; // Import Bootstrap JS
+
 
 const Navbar = () => {
   const [loginCheck, setLoginCheck] = useState(false);
@@ -33,15 +35,18 @@ const Navbar = () => {
           <button
             className="navbar-toggler"
             type="button"
-            data-toggle="collapse"
-            data-target="#navbarText"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarText"
             aria-controls="navbarText"
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse navbar-align-right" id="navbarText">
+          <div
+            className="collapse navbar-collapse"
+            id="navbarText"
+          >
             <ul className="navbar-nav ms-auto">
               <li className="nav-item">
                 <div style={{ display: "flex", gap: "15px" }}>
