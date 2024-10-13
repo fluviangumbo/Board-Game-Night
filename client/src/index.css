@@ -384,7 +384,8 @@ body {
 }
 
 .header {
-  display: center;
+  display: flex;
+  flex-direction:column;
   justify-content: center; /* Centers horizontally */
   align-items: center; /* Centers vertically */
   text-align: center;
@@ -392,8 +393,11 @@ body {
   padding: 20px; /* Inner spacing */
   border-radius: 15px; /* Curved corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-  width: 30%; /* Width of the container */
+  width: fit-content; /* Width of the container */
+  max-width:100%;
+  min-width: 300px;;
   margin: 20px auto;
+  overflow-wrap: break-word;
 }
 
 .tagline {
@@ -401,10 +405,14 @@ body {
   justify-content: center; /* Centers horizontally */
   align-items: center; /* Centers vertically */
   text-align: center;
+  font-size: 1.2rem; /* Larger text */
+  margin-top: 10px; /* Spacing above the tagline */
 }
 
 .name {
   display: block;
+  font-size:2.5rem;
+  margin:0;
 }
 
 .login-container {
