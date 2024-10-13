@@ -48,7 +48,7 @@ export function UserFactory(sequelize: Sequelize): typeof User {
         type: DataTypes.STRING,
         allowNull: false,
       },
-    }, // VALIDATION ADD HERE
+    },
     {
       tableName: 'users',
       sequelize,

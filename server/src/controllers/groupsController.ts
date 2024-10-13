@@ -2,38 +2,28 @@ import type { Request, Response } from 'express';
 import { Group, Access, Game, User } from '../models/index.js';
 import { JwtPayload } from '../middleware/auth.js';
 
-// TODO: Code out the controller functions for groups
+
 export const getGroups = async (_req: Request, res: Response) => {
     const groups = await Group.findAll();
 
     return res.json(groups);
 };
 
+
 export const getGroupByName = async (req: Request, res: Response) => {
     const { name } = req.params;
-
 
     try {
         const group = await Group.findOne({
             where: { name },
+            include: {
+                model: User,
+                through: { attributes: ['level'] }
+            }
         });
-
-        const access = await Access.findAll({
-            where: { group: group?.id },
-        });
-
-        const users = [];
-        for (const a of access) {
-            const user = await User.findOne({
-                where: { id: a.user },
-                attributes: ['username']
-            });
-
-            users.push({...user?.get({plain: true}), access: a.level});
-        }
 
         if (group) {
-            res.json({group, users});
+            res.json({group});
         } else {
             res.status(404).json({ message: 'Group not found.' });
         }
@@ -41,6 +31,7 @@ export const getGroupByName = async (req: Request, res: Response) => {
         res.status(500).json({ message: err.message })
     }
 };
+
 
 export const createGroup = async (req: Request, res: Response) => {
     const { name } = req.body;
@@ -60,17 +51,6 @@ export const createGroup = async (req: Request, res: Response) => {
     }
 };
 
-// export const getMembers = async () => { CAN BE FUTURE IMPLEMENTATION - routing to profiles from group
-//     const { group } = req.params;
-// };
-
-// export const getMemberById = async () => {
-//     return
-// };
-
-// export const getOwner = async () => {
-//     return
-// };
 
 export const getGames = async (req: Request, res: Response) => { 
     const { groupId } = req.params;
@@ -94,28 +74,28 @@ export const getGames = async (req: Request, res: Response) => {
     }
 };
 
-export const addGameToGroup = async (req: Request, res: Response) => {   
-    try {
-        const { gameId } = req.body.game; // can pass Game[]?
-        const { groupId } = req.params;
+// export const addGameToGroup = async (req: Request, res: Response) => {   
+//     try {
+//         const { gameId } = req.body.game; // can pass Game[]?
+//         const { groupId } = req.params;
     
-        const group = await Group.findByPk(groupId);
-        const game = await Game.findByPk(gameId);
+//         const group = await Group.findByPk(groupId);
+//         const game = await Game.findByPk(gameId);
 
-        if (!group) {
-            res.status(404).json({ message: 'Group Error.'});
-        } else if (!game) {
-            res.status(404).json({ message: 'Game not found.' });
-        } else {
-            await group.addGame(game);
-        }
+//         if (!group) {
+//             res.status(404).json({ message: 'Group Error.'});
+//         } else if (!game) {
+//             res.status(404).json({ message: 'Game not found.' });
+//         } else {
+//             await group.addGame(game);
+//         }
 
-        res.status(200).json({ message: 'Game added!' });
+//         res.status(200).json({ message: 'Game added!' });
         
-    } catch (err: any) {
-        res.status(500).json({ message: err.message });
-    }
-};
+//     } catch (err: any) {
+//         res.status(500).json({ message: err.message });
+//     }
+// };
 
 export const addMember = async (req: Request, res: Response) => {
     const { name, email } = req.params;
@@ -152,28 +132,3 @@ export const addMember = async (req: Request, res: Response) => {
         res.status(500).json({ message: err.message });
     }
 };
-
-// export const deleteGame = async () => {
-//     return
-// };
-
-// export const deleteMember = async () => {
-//     return
-// };
-
-// export const transferOwner = async () => {
-//     return
-// };
-
-// export const poll = async () => {
-//     return
-// };
-
-// export const sendMessage = async () => {
-//     return
-// };
-
-// export const deleteGroup = async () => {
-//     return
-// };
-
