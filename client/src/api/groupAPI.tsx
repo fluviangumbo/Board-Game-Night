@@ -1,4 +1,3 @@
-// import type { Access } from '../interfaces/Access';
 import Auth from '../utils/auth';
 import { GroupData } from "../interfaces/Group";
 
@@ -25,15 +24,14 @@ export const makeGroup = async (groupInfo: GroupData) => {
     }
 }
 
-export const getGroup = async (groupName: GroupData) => {
+export const getGroup = async (groupName: string) => {
     try {
-        const response = await fetch('/api/groups/:name', {
+        const response = await fetch(`/api/groups/${groupName}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${Auth.getToken()}`
               },
-              body: JSON.stringify(groupName),
         });
 
         const data = await response.json();
@@ -44,10 +42,18 @@ export const getGroup = async (groupName: GroupData) => {
     }
 }
 
-// export const addUserstoGroup = async (userEmail: string) => {
-//     try {
-        
-//     } catch (err) {
-//         console.log('Error adding user: ', err);
-//     }
-// }
+export const getAllGroups = async () => {
+    try {
+        const response = await fetch('/api/groups', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${Auth.getToken()}`
+              },
+        })
+
+        return await response.json();
+    } catch (err) {
+        console.log('Error fetching groups.', err);
+    }
+}

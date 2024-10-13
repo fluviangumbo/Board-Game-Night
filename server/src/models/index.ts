@@ -11,8 +11,8 @@ const Access = AccessFactory(sequelize);
 const Game = GameFactory(sequelize);
 
 // ALL ASSOCIATIONS FOR SEQUELIZE HERE
-User.belongsToMany(Group, { through: Access });
-Group.belongsToMany(User, { through: Access });
+User.belongsToMany(Group, { through: Access, as: 'UserAccess' });
+Group.belongsToMany(User, { through: Access, as: 'GroupAccess' });
 Game.belongsToMany(Group, { through: 'GroupGames' });
 Group.belongsToMany(Game, { through: 'GroupGames' });
 

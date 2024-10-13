@@ -13,6 +13,7 @@ import Calendar from './pages/Calendar.tsx';
 import Groups from './pages/Groups.tsx';
 // import Summary from './pages/Summary.tsx';
 import HotGames from './pages/HotStuff.tsx';
+import Group from './pages/Group.tsx';
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
       {
         path: '/groups',
         element: <Groups />,
+      },
+      {
+        path: '/groups/:name',
+        element: <Group />,
       },
       // {
       //   path: '/summary',
