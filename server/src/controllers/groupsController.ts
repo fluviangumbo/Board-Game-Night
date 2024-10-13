@@ -18,6 +18,7 @@ export const getGroupByName = async (req: Request, res: Response) => {
             where: { name },
             include: {
                 model: User,
+                as: 'GroupAccess',
                 through: { attributes: ['level'] }
             }
         });
