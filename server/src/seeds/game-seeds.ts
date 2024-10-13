@@ -1,5 +1,4 @@
 import { Game } from '../models/index.js';
-// import { type Game as GameType } from '../models/game.js';
 import csvParser from 'csv-parser';
 import fs from 'fs';
 import path from 'path';
