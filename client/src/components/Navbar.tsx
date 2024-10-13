@@ -58,6 +58,7 @@ const Navbar = () => {
                     <button
                       className="btn"
                       type="button"
+                      id="logout"
                       onClick={() => {
                         auth.logout();
                       }}
