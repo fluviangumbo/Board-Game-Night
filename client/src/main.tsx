@@ -14,6 +14,7 @@ import Groups from './pages/Groups.tsx';
 import Summary from './pages/Summary.tsx';
 import HotGames from './pages/HotStuff.tsx';
 import Group from './pages/Group.tsx';
+import VillainList from './pages/VillianList.tsx';
 
 const router = createBrowserRouter([
   {
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
       {
         path: '/summary',
         element: <Summary />,
+      },
+      {
+        path: '/villian-list',
+        element: <VillainList />,
       },
       {
         path: '/hot-games',

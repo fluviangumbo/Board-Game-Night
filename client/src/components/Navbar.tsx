@@ -72,6 +72,13 @@ const Navbar = () => {
                 </div>
               </li>
               <li className="nav-item">
+                <div>
+                  <button className="btn" type="button">
+                    <Link to="/villian-list">Villian List</Link>
+                  </button>
+                </div>
+              </li>
+              <li className="nav-item">
                 <button className="btn" type="button">
                   <Link to="/groups">Groups</Link>
                 </button>
