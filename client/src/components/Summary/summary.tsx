@@ -39,7 +39,7 @@ const SummaryForm = ({onSubmit}:{ onSubmit: (data:SummaryData)=>void}) => {
 
   return (
     <div className="form-container">
-      <form className="form" onSubmit={handleSubmit}>
+      <form className="form p-4 container-bx" onSubmit={handleSubmit}>
         <h1>Game Summary</h1>
         <div className="form-group">
           <Form.Label>What happened?</Form.Label>
