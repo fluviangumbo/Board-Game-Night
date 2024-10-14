@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import auth from "../utils/auth";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js'; // Import Bootstrap JS
-
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js"; // Import Bootstrap JS
 
 const Navbar = () => {
   const [loginCheck, setLoginCheck] = useState(false);
@@ -43,10 +42,7 @@ const Navbar = () => {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div
-            className="collapse navbar-collapse"
-            id="navbarText"
-          >
+          <div className="collapse navbar-collapse" id="navbarText">
             <ul className="navbar-nav ms-auto">
               <li className="nav-item">
                 <div style={{ display: "flex", gap: "15px" }}>
@@ -80,10 +76,29 @@ const Navbar = () => {
                   <Link to="/groups">Groups</Link>
                 </button>
               </li>
-              <li className="nav-item">
-                <button className="btn" type="button">
-                  <Link to="/calendar">Create an Event</Link>
-                </button>
+              <li className="nav-item dropdown">
+                <a
+                  className="nav-link dropdown-toggle"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  Session Options
+                </a>
+                <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a className="dropdown-item">
+                    <button className="btn" type="button">
+                      <Link to="/calendar">Create an Event</Link>
+                    </button>
+                  </a>
+                  <a className="dropdown-item">
+                    <button className="btn" type="button">
+                      <Link to="/summary">Summary</Link>
+                    </button>
+                  </a>
+                </div>
               </li>
             </ul>
           </div>
