@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 // import AddUserForm from '../components/AddUserForm';
 import { useParams } from 'react-router-dom';
 import { getGroup } from '../api/groupAPI';
-import { GroupData } from '../interfaces/Group';
+// import { GroupData } from '../interfaces/Group';
 // import { UserData } from '../interfaces/UserData';
 
 interface Member {
@@ -24,25 +24,31 @@ const Group: React.FC = () => {
     const { name } = useParams();
     const [group, setGroup] = useState<GroupPage | null>();
     const initGroup = useCallback(async () => {
-        const currentGroup = await getGroup(name!);
-        setGroup(currentGroup);
+        console.log(name);
+        const { group } = await getGroup(name!);
+        setGroup(group);
     }, []);
 
     useEffect(() => {initGroup()}, []);
-    console.log(group);
 
     // don't have to strigify, we can render the group hwoever we like inside the div
     return (
         <div className="container mt-5">
+            {group && (
+                <>
             <h2>{name}</h2>
             <div className="mb-3">
                 <ul className="user-list">
-                    {group!.GroupAccess!.map((user, index) => (
-                        <li key={index}>{JSON.stringify(user)}</li>
+                    {group.GroupAccess.map((user, index) => (
+                        <li key={index}>{user.username}</li>
                     ))}
-                    {JSON.stringify(group)}
                 </ul>
             </div>
+                    </>
+            )}
+            {!group && (
+                <h1>Group not found</h1>
+            )}
             {/* <AddUserForm onAddUser={handleAddUser} /> */}
         </div>
     );
