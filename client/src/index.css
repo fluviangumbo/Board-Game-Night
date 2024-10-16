@@ -5,7 +5,7 @@
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
- html {
+html {
   line-height: 1.15;
   /* 1 */
   -webkit-text-size-adjust: 100%;
@@ -26,6 +26,8 @@ body {
  */
 main {
   display: block;
+  background-image: url(/assets/kristina-kasputyte-unsplash.jpg);
+  appearance: none;
 }
 
 /**
@@ -143,7 +145,7 @@ img {
   border-style: none;
 }
 
-.mint-green{
+.mint-green {
   background-color: #e3f9e5;
 }
 /* Forms
@@ -177,6 +179,11 @@ input {
   overflow: visible;
 }
 
+#logout {
+    color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1));
+    text-decoration: underline;
+}
+
 /**
  * Remove the inheritance of text transform in Edge, Firefox, and IE.
  * 1. Remove the inheritance of text transform in Firefox.
@@ -191,9 +198,9 @@ select {
  * Correct the inability to style clickable types in iOS and Safari.
  */
 button,
-[type='button'],
-[type='reset'],
-[type='submit'] {
+[type="button"],
+[type="reset"],
+[type="submit"] {
   -webkit-appearance: button;
 }
 
@@ -201,9 +208,9 @@ button,
  * Remove the inner border and padding in Firefox.
  */
 button::-moz-focus-inner,
-[type='button']::-moz-focus-inner,
-[type='reset']::-moz-focus-inner,
-[type='submit']::-moz-focus-inner {
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
   border-style: none;
   padding: 0;
 }
@@ -212,9 +219,9 @@ button::-moz-focus-inner,
  * Restore the focus styles unset by the previous rule.
  */
 button:-moz-focusring,
-[type='button']:-moz-focusring,
-[type='reset']:-moz-focusring,
-[type='submit']:-moz-focusring {
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
 
@@ -264,8 +271,8 @@ textarea {
  * 1. Add the correct box sizing in IE 10.
  * 2. Remove the padding in IE 10.
  */
-[type='checkbox'],
-[type='radio'] {
+[type="checkbox"],
+[type="radio"] {
   box-sizing: border-box;
   /* 1 */
   padding: 0;
@@ -275,8 +282,8 @@ textarea {
 /**
  * Correct the cursor style of increment and decrement buttons in Chrome.
  */
-[type='number']::-webkit-inner-spin-button,
-[type='number']::-webkit-outer-spin-button {
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
   height: auto;
 }
 
@@ -284,7 +291,7 @@ textarea {
  * 1. Correct the odd appearance in Chrome and Safari.
  * 2. Correct the outline style in Safari.
  */
-[type='search'] {
+[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
   outline-offset: -2px;
@@ -294,7 +301,7 @@ textarea {
 /**
  * Remove the inner padding in Chrome and Safari on macOS.
  */
-[type='search']::-webkit-search-decoration {
+[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
@@ -360,7 +367,8 @@ body {
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 16px;
   color: #1a1a1a;
 }
@@ -381,16 +389,20 @@ body {
 }
 
 .header {
-  display: center;
+  display: flex;
+  flex-direction:column;
   justify-content: center; /* Centers horizontally */
   align-items: center; /* Centers vertically */
   text-align: center;
   background-color: #f0f8ff; /* Light background color */
-  padding: 20px;             /* Inner spacing */
-  border-radius: 15px;        /* Curved corners */
+  padding: 20px; /* Inner spacing */
+  border-radius: 15px; /* Curved corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-  width: 30%;                /* Width of the container */
-  margin: 20px auto;    
+  width: fit-content; /* Width of the container */
+  max-width:100%;
+  min-width: 300px;;
+  margin: 20px auto;
+  overflow-wrap: break-word;
 }
 
 .tagline {
@@ -398,19 +410,23 @@ body {
   justify-content: center; /* Centers horizontally */
   align-items: center; /* Centers vertically */
   text-align: center;
+  font-size: 1.2rem; /* Larger text */
+  margin-top: 10px; /* Spacing above the tagline */
 }
 
-.name{
-  display:block;
+.name {
+  display: block;
+  font-size:2.5rem;
+  margin:0;
 }
 
 .login-container {
   background-color: #f1f7c8; /* Light background color */
-  padding: 20px;             /* Inner spacing */
-  border-radius: 15px;        /* Curved corners */
+  padding: 20px; /* Inner spacing */
+  border-radius: 15px; /* Curved corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-  width: 50%;                /* Width of the container */
-  margin: 20px auto;    
+  width: 50%; /* Width of the container */
+  margin: 20px auto;
   text-align: center;
   align-items: center;
 }
@@ -420,102 +436,111 @@ body {
 }
 
 .custom-button {
-  background-color: #007bff;   /* Primary blue background */
-  color: white;                /* White text */
-  padding: 10px 20px;          /* Padding for the button */
-  border: none;                /* No border */
-  border-radius: 5px;          /* Rounded corners */
-  font-size: 16px;             /* Font size */
-  cursor: pointer;             /* Cursor change on hover */
-  transition: background-color 0.3s ease, transform 0.2s ease;  /* Smooth transitions */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* Subtle shadow */
+  background-color: #007bff; /* Primary blue background */
+  color: white; /* White text */
+  padding: 10px 20px; /* Padding for the button */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 16px; /* Font size */
+  cursor: pointer; /* Cursor change on hover */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
 .custom-button:hover {
-  background-color: #0056b3;   /* Darker blue on hover */
+  background-color: #0056b3; /* Darker blue on hover */
   transform: translateY(-2px); /* Slightly lift the button */
 }
 
 .custom-button:active {
-  background-color: #004085;   /* Even darker blue when clicked */
-  transform: translateY(0);    /* Reset the transform */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  /* Slightly smaller shadow */
+  background-color: #004085; /* Even darker blue when clicked */
+  transform: translateY(0); /* Reset the transform */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Slightly smaller shadow */
 }
 
 .custom-button:focus {
-  outline: none;               /* Remove default focus outline */
+  outline: none; /* Remove default focus outline */
   box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); /* Add custom focus outline */
 }
 
 .custom-light-button {
-  background-color: #f8f9fa;    /* Light gray background (Bootstrap light) */
-  color: #212529;               /* Dark text (Bootstrap dark) */
-  padding: 10px 20px;           /* Padding for the button */
-  border: 1px solid #ced4da;    /* Subtle border */
-  border-radius: 5px;           /* Rounded corners */
-  font-size: 16px;              /* Font size */
-  cursor: pointer;              /* Pointer on hover */
-  transition: background-color 0.3s ease, transform 0.2s ease;  /* Smooth transition */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* Subtle shadow for depth */
+  background-color: #f8f9fa; /* Light gray background (Bootstrap light) */
+  color: #212529; /* Dark text (Bootstrap dark) */
+  padding: 10px 20px; /* Padding for the button */
+  border: 1px solid #ced4da; /* Subtle border */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 16px; /* Font size */
+  cursor: pointer; /* Pointer on hover */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
   max-width: 75px;
   text-align: center;
-  align-items: center;}
+  align-items: center;
+}
 
 .custom-light-button:hover {
-  background-color: #e2e6ea;    /* Darker gray on hover */
-  transform: translateY(-1px);  /* Slightly lift the button */
+  background-color: #e2e6ea; /* Darker gray on hover */
+  transform: translateY(-1px); /* Slightly lift the button */
 }
 
 .custom-light-button:active {
-  background-color: #dae0e5;    /* Slightly darker gray on click */
-  transform: translateY(0);     /* Reset transform */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  /* Slightly smaller shadow */
+  background-color: #dae0e5; /* Slightly darker gray on click */
+  transform: translateY(0); /* Reset transform */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Slightly smaller shadow */
 }
 
 .custom-light-button:focus {
-  outline: none;                /* Remove default focus outline */
+  outline: none; /* Remove default focus outline */
   box-shadow: 0 0 0 3px rgba(130, 138, 145, 0.5); /* Custom focus shadow */
 }
 
 .container-bx {
   /* background-color: #f1f7c8; Light background color */
-  padding: 20px;             /* Inner spacing */
-  border-radius: 15px;        /* Curved corners */
+  padding: 20px; /* Inner spacing */
+  border-radius: 15px; /* Curved corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-  width: 50%;                /* Width of the container */
-  margin: 20px auto;    
+  width: 50%; /* Width of the container */
+  margin: 20px auto;
   text-align: center;
   align-items: center;
- font-weight: bold; 
+  font-weight: bold;
 }
 
 .custom-card {
-  background-color: #f8f9fa;          /* Light gray background */
-  border: 1px solid #ced4da;          /* Light border */
-  border-radius: 10px;                /* Rounded corners */
+  background-color: #f8f9fa; /* Light gray background */
+  border: 1px solid #ced4da; /* Light border */
+  border-radius: 10px; /* Rounded corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  transition: transform 0.3s;         /* Transition for hover effect */
+  transition: transform 0.3s; /* Transition for hover effect */
 }
 
 .custom-card:hover {
-  transform: translateY(-5px);        /* Lift effect on hover */
+  transform: translateY(-5px); /* Lift effect on hover */
 }
 
 .card-title {
-  font-family: 'Poppins', sans-serif; /* Modern font */
-  font-size: 2rem;                    /* Large title */
-  color: #007bff;                     /* Blue title color */
-  text-align: center;                 /* Center the title */
-  margin-bottom: 15px;                /* Spacing below the title */
+  font-family: "Poppins", sans-serif; /* Modern font */
+  font-size: 2rem; /* Large title */
+  color: #007bff; /* Blue title color */
+  text-align: center; /* Center the title */
+  margin-bottom: 15px; /* Spacing below the title */
 }
 
 .card-text {
-  font-family: 'Arial', sans-serif;   /* Default font for text */
-  font-size: 1.2rem;                  /* Slightly larger text */
-  color: #212529;                     /* Dark gray text */
-  margin-bottom: 10px;                /* Space between text items */
+  font-family: "Arial", sans-serif; /* Default font for text */
+  font-size: 1.2rem; /* Slightly larger text */
+  color: #212529; /* Dark gray text */
+  margin-bottom: 10px; /* Space between text items */
 }
 
 .card-text strong {
-  color: #007bff;                     /* Blue color for bold text */
+  color: #007bff; /* Blue color for bold text */
+}
+
+.nav-item {
+  padding: 0.5rem;
+}
+
+.navbar-brand {
+  text-align: left;
 }
