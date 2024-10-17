@@ -49,7 +49,6 @@ const Group: React.FC = () => {
             {!group && (
                 <h1>Group not found</h1>
             )}
-            {/* <AddUserForm onAddUser={handleAddUser} /> */}
         </div>
     );
 };

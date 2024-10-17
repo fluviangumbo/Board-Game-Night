@@ -1,5 +1,5 @@
 import SummaryForm from "../components/Summary/summary";
-import DisplayData from "../components/Summary/DisplayData";
+import DisplayData from "../components/Summary/displayData";
 import React, { useState } from "react";
 import { Container, Button } from "react-bootstrap";
 
